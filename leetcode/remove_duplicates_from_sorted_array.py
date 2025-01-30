@@ -1,6 +1,8 @@
 class Solution:
     @classmethod
     def removeDuplicates(cls, nums: list[int]) -> int:
+        if not nums:
+            return 0
         n = len(nums)
         k = 0
         last = nums[n - 1]
