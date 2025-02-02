@@ -1,0 +1,57 @@
+class Solution:
+    def removeDuplicates(self, nums: list[int]) -> list[int]:
+        """
+        notation:
+        x = i, val
+
+        nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+
+        prev_left = 0, 0
+        left = 1, 0
+        prev_right = 4, 9
+        right = 3, 8
+
+        nums = [0, 1, 1, 1, 2, 2, 3, 3, 4]
+
+        prev_left = 0, 0
+        left = 1, 1
+        prev_right = 4, 9
+        right = 3, 8
+
+        """
+        padding = 1
+        left = 0 + padding
+        right = len(nums) - 1 - padding
+
+        prev_left = None
+        prev_right = None
+
+        while left < right:
+
+            prev_left = left - 1
+            prev_right = right + 1
+
+            print(f"nums: {nums}")
+            print(f"left index: {left}")
+            print(f"right index: {right}")
+            print(f"prev left index: {prev_left}")
+            print(f"prev right index: {prev_right}")
+
+            if nums[left] == prev_left:
+                print(f"found duplicate on left: {nums[left]} {prev_left}")
+                del nums[prev_left]
+
+            if nums[right] == prev_right:
+                print(f"found duplicate on right: {nums[right]} {prev_right}")
+                del nums[prev_right]
+
+            left += 1
+            right -= 1
+
+            print()
+        return nums
+
+
+nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+solution = Solution().removeDuplicates(nums)
+print(solution)
