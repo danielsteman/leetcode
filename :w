@@ -15,9 +15,13 @@ class Solution:
 
         count = 0
 
-        if n > 0:
-            x = x * self.myPowRecursive(x, n - 1)
+        while n > 0:
+            # x = x * self.myPowRecursive(x, n - 1) 
             count += 1
+
+            print(f"count: {count}")
+            if count == 10:
+                break
 
         return x
 
